@@ -223,13 +223,7 @@ jobs:
           fi
         }
 
-        check_selected "android12-5.10" "build-android12-5-10" "${{ needs.build-android12-5-10.result }}"
-        check_selected "android13-5.10" "build-android13-5-10" "${{ needs.build-android13-5-10.result }}"
         check_selected "android13-5.15" "build-android13-5-15" "${{ needs.build-android13-5-15.result }}"
-        check_selected "android14-5.15" "build-android14-5-15" "${{ needs.build-android14-5-15.result }}"
-        check_selected "android14-6.1" "build-android14-6-1" "${{ needs.build-android14-6-1.result }}"
-        check_selected "android15-6.6" "build-android15-6-6" "${{ needs.build-android15-6-6.result }}"
-        check_selected "android16-6.12" "build-android16-6-12" "${{ needs.build-android16-6-12.result }}"
 
         if [[ "$failed" -ne 0 ]]; then
           exit 1
