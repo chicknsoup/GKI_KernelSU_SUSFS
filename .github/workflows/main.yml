@@ -339,6 +339,7 @@ jobs:
           echo "- BBRv3 TCP Congestion Control"
           echo "- IP Set support"
           echo "- TTL target support (IPv4/IPv6)"
+          echo "- Selinux Hide"
           echo
           echo "### 🔹 Bypass Builds"
           echo "- Includes module check bypass variant (Bypass)"
@@ -410,7 +411,7 @@ jobs:
       uses: actions/download-artifact@v8
       with:
         path: release-assets
-        pattern: '*-boot.img'
+        pattern: '*-boot*.img'
         merge-multiple: false
 
     - name: Zip AnyKernel3 for Release
