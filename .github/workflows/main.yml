@@ -410,7 +410,7 @@ jobs:
       uses: actions/download-artifact@v7
       with:
         path: release-assets
-        pattern: '*-boot*.img'
+        pattern: '*-boot.img'
         merge-multiple: false
 
     - name: Zip AnyKernel3 for Release
