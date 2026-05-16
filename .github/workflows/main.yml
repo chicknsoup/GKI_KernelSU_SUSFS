@@ -11,7 +11,7 @@ on:
         description: "Release Type"
         type: choice
         options:
-          - Action
+          - Actions
           - Pre-Release
           - Release
         default: Actions
@@ -139,7 +139,7 @@ jobs:
     - build-android13-5-15
     steps:
     - name: Download Misc Artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         path: ./downloaded-artifacts
         pattern: '*-Normal-Rejects'
@@ -191,7 +191,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.release_type != 'Actions' }}
+    if: always() && github.event_name == 'workflow_dispatch' && inputs.release_type != 'Actions' && !failed() && !cancelled()
     permissions:
       contents: write
     needs:
@@ -215,7 +215,7 @@ jobs:
           local job_name="$2"
           local result="$3"
           
-          if [[ "$current_type" == "all" || "$current_type" == "$target" ]]; then
+          if [[ "${current_type,,}" == "all" || "$current_type" == "$target" ]]; then
             if [[ "$result" != "success" ]]; then
               echo "Required job $job_name did not succeed (result: $result)"
               failed=1
@@ -400,14 +400,14 @@ jobs:
         done
 
     - name: Download AnyKernel3 Artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         path: release-assets
         pattern: '*-AnyKernel3'
         merge-multiple: false
 
     - name: Download Boot Image Artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         path: release-assets
         pattern: '*-boot.img'
