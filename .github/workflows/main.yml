@@ -136,14 +136,7 @@ jobs:
       actions: read
       contents: read
     needs:
-    - build-android12-5-10
-    - build-android13-5-10
     - build-android13-5-15
-    - build-android14-5-15
-    - build-android14-6-1
-    - build-android15-6-6
-    - build-android16-6-12
-
     steps:
     - name: Download Misc Artifacts
       uses: actions/download-artifact@v7
@@ -202,14 +195,7 @@ jobs:
     permissions:
       contents: write
     needs:
-    - build-android12-5-10
-    - build-android13-5-10
     - build-android13-5-15
-    - build-android14-5-15
-    - build-android14-6-1
-    - build-android15-6-6
-    - build-android16-6-12
-
     env:
       GH_TOKEN: ${{ github.token }}
       RELEASE_NAME: "GKI Kernels With KernelSU-Next & SUSFS v2.1.0"
