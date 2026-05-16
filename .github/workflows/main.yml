@@ -11,7 +11,7 @@ on:
         description: "Release Type"
         type: choice
         options:
-          - Actions
+          - Action
           - Pre-Release
           - Release
         default: Actions
@@ -191,7 +191,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    if: always() && github.event_name == 'workflow_dispatch' && inputs.release_type != 'Actions' && !failed() && !cancelled()
+    if: github.event_name == 'workflow_dispatch' && inputs.release_type != 'Actions'
     permissions:
       contents: write
     needs:
@@ -215,7 +215,7 @@ jobs:
           local job_name="$2"
           local result="$3"
           
-          if [[ "${current_type,,}" == "all" || "$current_type" == "$target" ]]; then
+          if [[ "${current_type}" == "all" || "$current_type" == "$target" ]]; then
             if [[ "$result" != "success" ]]; then
               echo "Required job $job_name did not succeed (result: $result)"
               failed=1
