@@ -67,12 +67,3 @@ index 719de4c..3f71202 100755
  ui_print " -> Flashing Now... "
  
  # boot install
-@@ -77,3 +135,8 @@ ui_print "Samsung_KernelSU_SUSFS GitHub Repository:"
- ui_print "https://github.com/WildKernels/Samsung_KernelSU_SUSFS"
- ui_print "Samsung kernels with KernelSU and SUSFS."
- ui_print " "
-+ui_print " "
-+ui_print " "
-+ui_print "Thanks for using Wild Kernels!"
-+ui_print "Please consider donating if you want to support development!"
-+ui_print "Have a great day! - TheWildJames"
